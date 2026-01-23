@@ -3,20 +3,22 @@
 //install express 
 const express = require(`express`);
 const app = express();
+const cors = require(`cors`);
 
 const dotenv = require(`dotenv`);
 const path = require(`path`)
 dotenv.config({path:path.join(__dirname, 'config', '.env')})
 
-const products = require(`./routes/product`);
-const orders = require(`./routes/order`);
-
+const connectDb = require("./config/connectDatabase");
+connectDb();
 // Routes
 const products = require("./routes/product");
 const orders = require("./routes/order");
 
 // Middleware
 app.use(express.json());
+
+app.use(cors());
 
 // API routes
 app.use("/api/v1", products);
@@ -29,4 +31,3 @@ app.listen(process.env.PORT, () => {
   );
 });
 
-})
