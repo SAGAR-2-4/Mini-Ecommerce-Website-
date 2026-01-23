@@ -1,17 +1,36 @@
-const { default: router } = require("../routes/product")
+const productModel = require('../models/productModel')
 
-exports.getProducts= (req, res, next) =>{
-    res.json({
+exports.getProducts = async(req, res, next) => {
+    const query = req.query.keyword?{name :{
+        $regex : req.query.keyword,
+        $options : 'i'
+    }}:{};
+    const products = await productModel.find(query);
+    if(!products){
+        return res.status(404).json({
+            success:false,
+            message:`No products exist`
+        });
+    }
+    res.status(200).json({
         success: true,
-        message: `Get Products working`
+        products
     })
 }
 
-exports.getSingleProduct= (req, res, next) => {
-    res.json({
+exports.getSingleProduct = async(req, res, next) => {
+    const getProductId = await productModel.findById(req.params.id);
+
+    if(!getProductId){
+        return res.status(404).json({
+            success: false,
+            message:`Product is not found`
+        });
+    }
+    res.status(200).json({
         success: true,
-        message:`Get Single Products working`
+        getProductId
+        
     })
 }
 
-module.exports = router;

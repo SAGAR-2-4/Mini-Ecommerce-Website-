@@ -1,0 +1,73 @@
+[
+  {
+    "name": "Apple iPhone 15 Pro",
+    "price": "1499",
+    "description": "Apple iPhone 15 Pro with A17 chip, titanium body, and advanced camera system.",
+    "ratings": "4.8",
+    "images": [
+      { "image": "https://example.com/images/iphone15pro-front.jpg" },
+      { "image": "https://example.com/images/iphone15pro-back.jpg" }
+    ],
+    "category": "Mobile Phones",
+    "seller": "Apple Store",
+    "stock": "25",
+    "numOfReview": "120",
+    "createdAt": "2025-01-18T10:30:00.000Z"
+  },
+  {
+    "name": "Samsung Galaxy S24 Ultra",
+    "price": "1399",
+    "description": "Samsung Galaxy S24 Ultra with 200MP camera and Snapdragon processor.",
+    "ratings": "4.7",
+    "images": [
+      { "image": "https://example.com/images/s24-ultra.jpg" }
+    ],
+    "category": "Mobile Phones",
+    "seller": "Samsung Official",
+    "stock": "40",
+    "numOfReview": "98",
+    "createdAt": "2025-01-18T10:30:00.000Z"
+  },
+  {
+    "name": "Sony WH-1000XM5 Headphones",
+    "price": "399",
+    "description": "Premium noise-cancelling wireless headphones with exceptional sound quality.",
+    "ratings": "4.9",
+    "images": [
+      { "image": "https://example.com/images/sony-xm5.jpg" }
+    ],
+    "category": "Electronics",
+    "seller": "Sony Store",
+    "stock": "60",
+    "numOfReview": "210",
+    "createdAt": "2025-01-18T10:30:00.000Z"
+  },
+  {
+    "name": "Dell XPS 15 Laptop",
+    "price": "1899",
+    "description": "Dell XPS 15 with Intel i7 processor, 16GB RAM, and 1TB SSD.",
+    "ratings": "4.6",
+    "images": [
+      { "image": "https://example.com/images/dell-xps-15.jpg" }
+    ],
+    "category": "Laptops",
+    "seller": "Dell Official",
+    "stock": "15",
+    "numOfReview": "65",
+    "createdAt": "2025-01-18T10:30:00.000Z"
+  },
+  {
+    "name": "Apple Watch Series 9",
+    "price": "499",
+    "description": "Apple Watch Series 9 with advanced health tracking and fitness features.",
+    "ratings": "4.8",
+    "images": [
+      { "image": "https://example.com/images/apple-watch-9.jpg" }
+    ],
+    "category": "Wearables",
+    "seller": "Apple Store",
+    "stock": "50",
+    "numOfReview": "180",
+    "createdAt": "2025-01-18T10:30:00.000Z"
+  }
+]
