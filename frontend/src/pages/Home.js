@@ -1,38 +1,41 @@
-import React, { useState, useEffect } from 'react'
-import { Fragment } from 'react'
-import ProductCard from '../components/ProductCard'
+
+import React, { useState, useEffect, Fragment } from "react";
+import ProductCard from "../components/ProductCard";
+import { useSearchParams } from "react-router-dom";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
- useEffect(() => {
-  fetch(`${process.env.REACT_APP_API_URL}/products`)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(`HTTP error! Status: ${res.status}`);
-      }
-      return res.json();
-    })
-    .then(data => {
-      console.log("API data:", data);
-      setProducts(data.products);
-    })
-    .catch(err => console.error("Fetch error:", err));
-}, []);
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  const keyword = searchParams.get("keyword")?.trim() || "";
 
-  return <Fragment>
-    
-    <h1 id="products_heading">Latest Products</h1>
+  useEffect(() => {
+    // If keyword is empty but URL still has ?keyword=, remove it cleanly
+    if (!keyword && searchParams.has("keyword")) {
+      setSearchParams({}, { replace: true });
+      return; // avoid double-fetch
+    }
 
-    <section id="products" className="container mt-5">
-      <div className="row">
-       {products.map(product => (
-  <ProductCard  key={product._id} product={product} />
-))}
+    const url = `${process.env.REACT_APP_API_URL}/products${
+      keyword ? `?keyword=${encodeURIComponent(keyword)}` : ""
+    }`;
 
-      </div>
-    </section>
-  </Fragment>
-    
-  
-}
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setProducts(data.products || []))
+      .catch((err) => console.error("Fetch error:", err));
+  }, [keyword, searchParams, setSearchParams]);
+
+  return (
+    <Fragment>
+      <h1 id="products_heading">Latest Products</h1>
+
+      <section id="products" className="container mt-5">
+        <div className="row">
+          {products.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
+        </div>
+      </section>
+    </Fragment>
+  );
