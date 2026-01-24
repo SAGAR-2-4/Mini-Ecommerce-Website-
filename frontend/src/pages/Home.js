@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, Fragment } from "react";
 import ProductCard from "../components/ProductCard";
 import { useSearchParams } from "react-router-dom";
@@ -38,4 +39,3 @@ export default function Home() {
       </section>
     </Fragment>
   );
-}
