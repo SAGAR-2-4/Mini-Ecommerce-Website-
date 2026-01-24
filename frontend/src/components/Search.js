@@ -8,7 +8,7 @@ export default function Search() {
     const navigate = useNavigate(); 
 
     const handleSearch = ()=>{
-        navigate(`/products?keyword=${searchTerm}`);
+        navigate(`/search?keyword=${searchTerm}`);
 
     }
 
@@ -21,6 +21,7 @@ export default function Search() {
             id="search_field"
             onChange={(e) => setSearchTerm(e.target.value)}
             className="form-control"
+            onBlur={handleSearch}
             placeholder="Enter Product Name ..."
           />
           <div className="input-group-append">
