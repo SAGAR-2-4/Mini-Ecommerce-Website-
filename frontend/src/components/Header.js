@@ -1,20 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import Home from './pages/Home';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from 'react'
+import Search from './Search'
+import { Link } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <div>
-          <Header/>
-          <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/search" element={<Home/>} />
-          </Routes>
+    <nav className="navbar row">
+      <div className="col-12 col-md-3">
+        <div className="navbar-brand">
+          <Link to="/"><img width="150px" src="./images/logo.png" /></Link>
         </div>
       </Router>
       <Footer/>
